@@ -1,1 +1,4 @@
-angular.module('starter.directives', []);
+(function () {
+  'use strict';
+  angular.module('starter.directives', []);
+})();

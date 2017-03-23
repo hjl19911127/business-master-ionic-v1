@@ -1,1 +1,4 @@
-angular.module('starter.filters', []);
+(function () {
+  'use strict';
+  angular.module('starter.filters', []);
+})();
