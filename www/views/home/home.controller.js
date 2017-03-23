@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  angular.module('starter.controllers', [])
+  angular.module('home.controllers', [])
     .controller('HomeCtrl', ['$scope', function ($scope) {
       $scope.playlists = [
         { title: 'Reggae', id: 1 },
@@ -11,6 +11,6 @@
         { title: 'Cowbell', id: 6 }
       ];
     }])
-    .controller('PlaylistCtrl', function ($scope, $stateParams) {
-    });
-});
+    .controller('PlaylistCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+    }]);
+})();
