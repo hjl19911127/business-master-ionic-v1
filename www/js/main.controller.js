@@ -2,10 +2,10 @@
   'use strict';
   angular.module('main.controllers', [])
     .controller('MainCtrl', ['$scope', 'LocalStorageService', '$state', function ($scope, LocalStorageService, $state) {
-      LocalStorageService.add('App', {
-        version: '1.0.0',
-        run: false
-      });
+      // LocalStorageService.add('App', {
+      //   version: '1.0.0',
+      //   run: false
+      // });
       var app = LocalStorageService.get('App', {
         version: '1.0.0',
         run: false
