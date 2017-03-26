@@ -1,4 +1,4 @@
 (function () {
   'use strict';
-  angular.module('starter.services', []);
+  angular.module('starter.services', ['localStorage.service']);
 })();

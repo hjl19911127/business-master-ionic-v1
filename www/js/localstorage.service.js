@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  angular.module('starter.services')
+  angular.module('localStorage.service', [])
     .factory('LocalStorageService', function () {
       var service = {};
       service.get = function (key, defaultValue) {

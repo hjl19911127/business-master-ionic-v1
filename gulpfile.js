@@ -9,7 +9,9 @@ var uglify = require('gulp-uglify');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  css: ['./www/css/style.css'],
+  js: ['./www/views/**/*.js'],
 };
 
 gulp.task('default', ['sass']);
@@ -37,15 +39,17 @@ gulp.task('minifycss', function (done) {
 
 gulp.task('concatJS', function (done) {
   gulp.src('./www/views/**/*.js')
-    .pipe(concat('all.js'))
+    .pipe(concat('app.bundle.js'))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });
 
-gulp.task('watch', ['sass'], function () {
+gulp.task('watch', ['sass', 'minifycss', 'concatJS'], function () {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.css, ['minifycss']);
+  gulp.watch(paths.js, ['concatJS']);
 });
 
 gulp.task('install', ['git-check'], function () {
