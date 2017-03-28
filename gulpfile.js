@@ -13,8 +13,8 @@ var paths = {
   css: ['./www/css/style.css'],
   js: ['./www/views/**/*.js'],
 };
-
-gulp.task('default', ['sass']);
+gulp.task('serve:before', ['default']);
+gulp.task('default', ['sass', 'watch']);
 
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
