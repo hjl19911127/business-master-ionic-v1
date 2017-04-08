@@ -32,6 +32,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         url: '/welcome',
         templateUrl: 'views/welcome/welcome.html'
       })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login/login.html',
+        controller:'LoginCtrl'
+      })
+      .state('forgotpassword', {
+        url: '/forgotpassword',
+        templateUrl: 'views/forgotpassword/forgotpassword.html'
+      })
       .state('app', {
         url: '/app',
         abstract: true,
