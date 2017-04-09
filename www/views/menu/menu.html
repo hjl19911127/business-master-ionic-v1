@@ -12,25 +12,48 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-energized">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
-      </ion-list>
+  <ion-side-menu side="left" class="dark-menu">
+    <ion-content class="has-footer dark-bg">
+      <div class="row row-center row-no-padding padding-left padding-right">
+        <div class="col col-66">
+          <h4 class="light">{{shopData.name}}</h4>
+          <h6 class="stable">{{shopData.phone}}</h6>
+        </div>
+        <div class="col col-34 text-right">
+          <span class="energized-bg light">&nbsp;高级版&nbsp;</span>
+        </div>
+      </div>
+      <ul class="list side-menu margin-left menu-slide">
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-social-usd"></i>资金账户
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-ios-home-outline"></i>手机橱窗
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-android-share-alt"></i>邀请有礼
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-android-chat"></i>开店论坛
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-ios-people"></i>反馈建议
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+        <li class="item item-icon-left item-icon-right dark-bg stable" menu-close>
+          <i class="icon ion-ios-compose-outline"></i>帮助中心
+          <i class="icon ion-ios-arrow-right"></i>
+        </li>
+      </ul>
     </ion-content>
+    <div class="bar bar-footer bar-dark">
+      <a class="button button-clear icon-left stable mtn12" menu-close>
+        <i class="icon ion-ios-gear font-size-medium"></i>&nbsp;设置
+      </a>
+    </div>
   </ion-side-menu>
 </ion-side-menus>

@@ -1,16 +1,11 @@
 (function () {
   'use strict';
   angular.module('home.controllers', [])
-    .controller('HomeCtrl', ['$scope', function ($scope) {
-      $scope.playlists = [
-        { title: 'Reggae', id: 1 },
-        { title: 'Chill', id: 2 },
-        { title: 'Dubstep', id: 3 },
-        { title: 'Indie', id: 4 },
-        { title: 'Rap', id: 5 },
-        { title: 'Cowbell', id: 6 }
-      ];
-    }])
-    .controller('PlaylistCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+    .controller('HomeCtrl', ['$scope', '$state', 'LocalStorageService', function ($scope, $state, LocalStorageService) {
+      var USER_KEY = 'USER_INFO', IS_LOGIN_KEY = 'IS_LOGIN';
+      $scope.$on('$ionicView.enter', function (event, data) {
+        var isLogin = Boolean(LocalStorageService.get(IS_LOGIN_KEY));
+        if (!isLogin) $state.go('login');
+      })
     }]);
 })();

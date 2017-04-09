@@ -1,9 +1,65 @@
-<ion-view view-title="Home">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
-    </ion-list>
+<ion-view view-title="首页">
+  <ion-content class="has-footer">
+    <img src="views/home/img/androidbanner.png" alt="" class="full-image image-title">
+    <div class="row stable-bg">
+      <div class="col col-33">
+        <h5>今日报表</h5>
+        <p>256.14</p>
+        <p>昨日：256.14 <i class="icon ion-arrow-right-a dark"></i></p>
+      </div>
+      <div class="col col-33">
+        <h5>本周周报表</h5>
+        <p>256.14</p>
+        <p>同期：525.78 <i class="icon ion-arrow-down-a balanced"></i></p>
+      </div>
+      <div class="col col-33">
+        <h5>本月报表</h5>
+        <p>256.14</p>
+        <p>同期：125.78 <i class="icon ion-arrow-up-a assertive"></i></p>
+      </div>
+    </div>
+    <div class="row light-bg quick-actions row-no-padding">
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-folder energized"></i>新增商品
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-social-usd positive"></i>收银记账
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-android-person-add assertive"></i>新增会员
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-list energized"></i>支出管理
+      </a>
+    </div>
+    <div class="row light-bg quick-actions row-no-padding">
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-cart energized"></i>商品管理
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-search-strong positive"></i>查询销售
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-person-stalker assertive"></i>会员管理
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-pie calm"></i>智能分析
+      </a>
+    </div>
+    <div class="row light-bg quick-actions row-no-padding">
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-android-cloud-circle energized"></i>供应商管理
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-ios-calendar balanced"></i>挂单
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item">
+        <i class="icon ion-android-add assertive"></i>高级功能
+      </a>
+      <a href="#" class="col col-border tab-item quick-action-item"></a>
+    </div>
   </ion-content>
+  <div class="bar bar-footer bar-stable no-bg">
+    <h6 class="title">©2010-2017 生意专家</h6>
+  </div>
 </ion-view>
