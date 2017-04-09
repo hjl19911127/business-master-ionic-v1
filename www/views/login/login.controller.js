@@ -1,13 +1,15 @@
 (function () {
   'use strict';
   angular.module('login.controllers', [])
-    .controller('LoginCtrl', ['$scope', '$state', '$ionicPopup', function ($scope, $state, $ionicPopup) {
-      $scope.loginData = {
-        username: 'admin',
-        password: '123456'
-      }
+    .controller('LoginCtrl', ['$scope', '$state', '$ionicPopup', 'LocalStorageService', function ($scope, $state, $ionicPopup, LocalStorageService) {
+      var USER_KEY = 'USER_INFO';
+      $scope.loginData = LocalStorageService.get(USER_KEY, {
+        username: '',
+        password: ''
+      })
       $scope.login = function () {
         if ($scope.loginData.username == 'admin' && $scope.loginData.password == '123456') {
+          LocalStorageService.update(USER_KEY, $scope.loginData);
           $state.go('app.home', {})
         } else {
           $ionicPopup.alert({

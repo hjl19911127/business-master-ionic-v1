@@ -8,10 +8,10 @@
         try {
           val = angular.fromJson(val);
         } catch (error) {
-          val = null
+          val = null;
         }
         if (defaultValue && val === null) {
-          val = defaultStatus;
+          val = defaultValue;
         }
         return val;
       }
