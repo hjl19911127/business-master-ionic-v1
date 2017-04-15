@@ -8,6 +8,10 @@
 .margin-left{
   margin-left: 10px;
 }
+.on-right{
+  margin-left:40%;
+  width:60%;
+}
 .menu-slide>li{
   border-left: none;
 }
@@ -58,3 +62,4 @@
   background-color:#fff;
   border-left:4px #ff6a3c solid;
 }
+

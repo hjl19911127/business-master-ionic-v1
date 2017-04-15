@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
-      .state('app.categoryadd', {
+      .state('app.categoryAdd', {
         url: '/categoryadd/:id/:name',
         views: {
           'menuContent': {
