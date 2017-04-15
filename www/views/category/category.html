@@ -1,0 +1,23 @@
+<ion-view view-title="分类管理">
+  <ion-content class="has-header stable-bg" style="width:40%;">
+    <ul class="list">
+      <li class="item stable-bg" style="border-right:none;" ng-repeat="item in categories" ng-class="{'item-active':item.id==activeCategory.id}"
+        ng-click="selectCategory(item.id)">
+        {{item.name}}
+      </li>
+    </ul>
+  </ion-content>
+  <ion-content class="has-header" style="width:60%;margin-left:40%;" scroll="false">
+    <ul class="list">
+      <li class="item item-icon-right padding-left margin-left" style="border-left:none;" ng-repeat="item in sections" ng-click="selectSection(item.id)">
+        {{item.name}}
+        <i class="icon ion-ios-arrow-forward" style="font-size:medium;"></i>
+      </li>
+    </ul>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;border-top:1px solid #f8f8f8;">
+      <span ng-if="sections.length == 0">目前没有小分类</span>
+      <span ng-if="sections.length != 0">共{{ sections.length-1 }}种商品分类</span>
+      <button class="button button-stable button-outline button-small" ng-click="showActionSheet()" style="float:right;"><i class="ion-android-more-horizontal"></i></button>
+    </div>
+  </ion-content>
+</ion-view>

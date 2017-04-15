@@ -53,3 +53,8 @@
   display: table-cell;
   vertical-align: middle;
 }
+
+.item-active{
+  background-color:#fff;
+  border-left:4px #ff6a3c solid;
+}

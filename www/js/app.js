@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       .state('login', {
         url: '/login',
         templateUrl: 'views/login/login.html',
-        controller:'LoginCtrl'
+        controller: 'LoginCtrl'
       })
       .state('forgotpassword', {
         url: '/forgotpassword',
@@ -47,24 +47,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'views/menu/menu.html',
         controller: 'AppCtrl'
       })
-
-      .state('app.search', {
-        url: '/search',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/search.html'
-          }
-        }
-      })
-
-      .state('app.browse', {
-        url: '/browse',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/browse.html'
-          }
-        }
-      })
       .state('app.home', {
         url: '/home',
         views: {
@@ -74,13 +56,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
-
-      .state('app.single', {
-        url: '/playlists/:playlistId',
+      .state('app.category', {
+        url: '/category',
         views: {
           'menuContent': {
-            templateUrl: 'templates/playlist.html',
-            controller: 'PlaylistCtrl'
+            templateUrl: 'views/category/category.html',
+            controller: 'categoryCtrl'
+          }
+        }
+      })
+      .state('app.categoryadd', {
+        url: '/categoryadd/:id/:name',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/category/category-add.html',
+            controller: 'categoryAddCtrl'
           }
         }
       });
