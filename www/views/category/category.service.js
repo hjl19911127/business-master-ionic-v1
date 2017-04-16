@@ -20,7 +20,12 @@
         { 'id': 15, 'name': '网卡', 'parent_id': 4 },
         { 'id': 16, 'name': '网络配件', 'parent_id': 4 }
       ];
-      service.get = function (isTree, id) {
+      service.getAll = function (isTree, cid) {
+        var val = LocalStorageService.get(key, defaultCategories);
+        if (id) val = val[id];
+        return val;
+      }
+      service.getSubCategory = function (isTree, cid) {
         var val = LocalStorageService.get(key, defaultCategories);
         if (id) val = val[id];
         return val;
