@@ -73,6 +73,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             controller: 'categoryAddCtrl'
           }
         }
+      })
+      .state('app.categoryEdit', {
+        url: '/categoryedit/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/category/category-edit.html',
+            controller: 'categoryEditCtrl'
+          }
+        }
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');

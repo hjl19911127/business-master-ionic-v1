@@ -1,0 +1,31 @@
+<ion-view view-title="编辑分类" ca>
+  <ion-content class="has-header stable-bg">
+    <div class="list">
+      <div class="item item-input item-button-right">
+        <span class="input-label">大分类</span>
+        <input type="text" placeholder="商品大分类名称" ng-model="category.name">
+        <div class="buttons">
+          <button class="button button-clear button-energized ion-ios-compose-outline" ng-click="editCategory()">
+          </button>
+          <button class="button button-clear button-energized ion-minus-circled" ng-click="removeCategory()">
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="item item-input item-button-right" ng-repeat="item in sections">
+        <span class="input-label">小分类</span>
+        <input type="text" placeholder="商品小分类名称" ng-model="item.name">
+        <div class="buttons">
+          <button class="button button-clear button-energized ion-ios-compose-outline" ng-click="editCategory($index)">
+          </button>
+          <button class="button button-clear button-energized ion-minus-circled" ng-click="removeSection($index)">
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="button button-block button-full button-energized" ng-click="saveCategory()">保存</button>
+    </div>
+  </ion-content>
+</ion-view>
