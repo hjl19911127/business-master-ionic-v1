@@ -2,42 +2,7 @@
   'use strict';
   angular.module('category.controllers', ['category-add.controllers'])
     .controller('categoryCtrl', ['$scope', '$state', 'LocalStorageService', '$ionicHistory', '$ionicActionSheet', function ($scope, $state, LocalStorageService, $ionicHistory, $ionicActionSheet) {
-      $scope.categories = [
-        {
-          'id': 1, 'name': '电脑整机',
-          'children': [
-            { 'id': 5, 'name': '笔记本', children: [] },
-            { 'id': 6, 'name': '台式机', children: [] },
-            { 'id': 7, 'name': '平板电脑', children: [] },
-          ]
-
-        },
-        {
-          'id': 2, 'name': '电脑配件',
-          'children': [
-            { 'id': 8, 'name': 'CPU', children: [] },
-            { 'id': 9, 'name': '内存', children: [] }
-          ]
-
-        },
-        {
-          'id': 3, 'name': '外设产品',
-          'children': [
-            { 'id': 10, 'name': '鼠标', children: [] },
-            { 'id': 11, 'name': '键盘', children: [] },
-            { 'id': 12, 'name': 'U盘', children: [] }
-          ]
-        },
-        {
-          'id': 4, 'name': '网络产品',
-          'children': [
-            { 'id': 13, 'name': '路由器', children: [] },
-            { 'id': 14, 'name': '交换机', children: [] },
-            { 'id': 15, 'name': '网卡', children: [] },
-            { 'id': 16, 'name': '网络配件', children: [] }
-          ]
-        }
-      ];
+      $scope.categories =
       $scope.activeCategory = $scope.categories[0];
       $scope.sections = $scope.categories[0].children;
       if ($scope.sections && $scope.sections[0].id != 0) {
