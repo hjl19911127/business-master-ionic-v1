@@ -61,6 +61,9 @@
         $scope.activeSection = data;
         $ionicHistory.goBack();
       }
+      $scope.hrefToAddCategory = function () {
+        $state.go('app.categoryAdd', { id: $scope.activeCategory.id })
+      }
       $scope.showActionSheet = function () {
         $ionicActionSheet.show({
           buttons: [{ 'text': '新增小分类' }, { 'text': '编辑分类' }],
@@ -68,6 +71,7 @@
           buttonClicked: function (index) {
             switch (index) {
               case 0:
+                $scope.hrefToAddCategory();
                 break;
               case 1:
                 break;

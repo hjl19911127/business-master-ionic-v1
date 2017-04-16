@@ -9,9 +9,9 @@
       if (app.run === false) {
         app.run = true;
         LocalStorageService.update('APP', app);
-        $state.go('welcome');
+        $state.go('welcome', {}, { location: 'replace' });
       } else {
-        $state.go('app.home');
+        $state.go('app.home', {}, { location: 'replace' });
       }
     }]);
 })();

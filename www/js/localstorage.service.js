@@ -25,5 +25,5 @@
         localStorage.removeItem(key);
       }
       return service;
-    })
+    });
 })();

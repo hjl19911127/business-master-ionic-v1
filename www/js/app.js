@@ -66,7 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
       .state('app.categoryAdd', {
-        url: '/categoryadd/:id/:name',
+        url: '/categoryadd/:id',
         views: {
           'menuContent': {
             templateUrl: 'views/category/category-add.html',

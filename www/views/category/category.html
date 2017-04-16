@@ -3,29 +3,36 @@
     <a class="button button-icon button-clear ion-ios-plus-empty" ui-sref="app.categoryAdd({id:0})">
     </a>
   </ion-nav-buttons>
-  <ion-content class="has-header stable-bg" style="width:40%;">
-    <div class="row margin-left">大分类</div>
-    <ul class="list">
+  <div class="bar bar-subheader bar-stable" style="width:40%;">
+    <div class="popup-sub-title">
+      <h6 class="title">大分类</h6>
+    </div>
+  </div>
+  <div class="bar bar-subheader bar-light on-right">
+    <div class="popup-sub-title">
+      <h6 class="title">小分类</h6>
+    </div>
+  </div>
+  <ion-content class="has-header stable-bg has-subheader" style="width:40%;">
+    <ul class="list ">
       <li class="item stable-bg" style="border-right:none;" ng-repeat="item in categories" ng-class="{'item-active':item.id==activeCategory.id}"
         ng-click="selectCategory(item.id)">
         {{item.name}}
       </li>
     </ul>
   </ion-content>
-  <ion-content class="has-header on-right" scroll="false">
-    <div class="row margin-left">小分类</div>
+  <ion-content class="has-header has-subheader has-footer on-right">
     <ul class="list">
       <li class="item item-icon-right padding-left margin-left" style="border-left:none;" ng-repeat="item in sections" ng-click="selectSection(item.id)">
         {{item.name}}
         <i class="icon ion-ios-arrow-forward" style="font-size:medium;"></i>
       </li>
     </ul>
-    <button class="button button-positive button-clear icon-left ion-plus-circled margin-left">新增小分类</button>
-
+    <a class="button button-positive button-clear icon-left ion-plus-circled margin-left" ui-sref="app.categoryAdd({id:activeCategory.id})">新增小分类</a>
   </ion-content>
   <div class="bar bar-footer row-center on-right">
-      <span ng-if="sections.length == 0">目前没有小分类</span>
-      <span ng-if="sections.length != 0">共{{ sections.length-1 }}种商品分类</span>
-      <button class="button stable-border button-icon ion-android-more-horizontal" ng-click="showActionSheet()" style="position:absolute;top:5px;right:5px;bottom:5px;"></button>
-    </div>
+    <span ng-if="sections.length == 0">目前没有小分类</span>
+    <span ng-if="sections.length != 0">共{{ sections.length - 1 }}种商品分类</span>
+    <button class="button stable-border button-icon ion-android-more-horizontal" ng-click="showActionSheet()" style="position:absolute;top:5px;right:5px;bottom:5px;"></button>
+  </div>
 </ion-view>
