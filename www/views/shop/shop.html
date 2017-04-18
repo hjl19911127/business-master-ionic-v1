@@ -1,0 +1,48 @@
+<ion-view view-title="店铺设置">
+  <ion-content class="stable-bg has-footer" scroll="false">
+    <div class="list list-inset">
+      <a ui-sref="app.shopEdit({'title':'店铺名称','key':'title'})" class="item item-icon-right">
+        店铺名称
+        <span class="item-note">{{shop.title}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a ui-sref="app.shopEdit({'title':'店铺简称','key':'alias'})" class="item item-icon-right">
+        店铺简称
+        <span class="item-note">{{shop.alias}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item">
+        注册时间
+        <span class="item-note">{{shop.registerTime}}</span>
+      </a>
+      <a class="item">
+        手机号码
+        <span class="item-note">{{shop.phone}}</span>
+      </a>
+    </div>
+    <div class="list list-inset">
+      <a class="item">
+        电子邮件
+        <span class="item-note">{{shop.email}}</span>
+      </a>
+      <a ui-sref="app.shopEdit({'title':'店主姓名','key':'shopOwner'})" class="item item-icon-right">
+        店主姓名
+        <span class="item-note">{{shop.shopOwner}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a ui-sref="app.shopEdit({'title':'店铺电话','key':'shopPhone'})" class="item item-icon-right">
+        店铺电话
+        <span class="item-note">{{shop.shopPhone}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a ui-sref="app.shopEdit({'title':'行业类型','key':'industryClassification'})" class="item item-icon-right">
+        行业类型
+        <span class="item-note">{{shop.industryClassification}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer bar-stable no-bg">
+    <h6 class="title">©2010-2017 生意专家</h6>
+  </div>
+</ion-view>

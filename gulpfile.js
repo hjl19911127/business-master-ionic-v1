@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
+  sass: ['./scss/**/*.scss','./www/css/*.scss'],
   css: ['./www/css/style.css'],
   js: ['./www/views/**/*.js'],
 };
@@ -40,7 +40,7 @@ gulp.task('minifycss', function (done) {
 gulp.task('concatJS', function (done) {
   gulp.src('./www/views/**/*.js')
     .pipe(concat('app.bundle.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);

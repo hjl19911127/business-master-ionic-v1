@@ -70,6 +70,7 @@
         if (subCategory.length) {
           this.createSubCategory(cid, subCategory);
         }
+        return cid;
       }
       service.createCategory = function (data) {
         data.id = this.nowId;

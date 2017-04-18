@@ -58,6 +58,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
       .state('app.category', {
         url: '/category',
+        params: {
+          activeId: 0
+        },
         views: {
           'menuContent': {
             templateUrl: 'views/category/category.html',
@@ -80,6 +83,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           'menuContent': {
             templateUrl: 'views/category/category-edit.html',
             controller: 'categoryEditCtrl'
+          }
+        }
+      })
+      .state('app.setting', {
+        url: '/setting',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/setting/setting.html',
+            controller: 'SettingCtrl'
+          }
+        }
+      })
+      .state('app.shop', {
+        url: '/shop',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/shop/shop.html',
+            controller: 'ShopCtrl'
+          }
+        }
+      })
+      .state('app.shopEdit', {
+        url: '/shopedit',
+        params: {
+          'title': null,
+          'key': ''
+        },
+        views: {
+          'menuContent': {
+            templateUrl: 'views/shop/shop-edit.html',
+            controller: 'ShopEditCtrl'
           }
         }
       });

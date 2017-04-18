@@ -16,12 +16,13 @@
     width: 60%;
 }
 
-.menu-slide>li {
-    border-left: none;
-}
-
-.menu-slide>li>i {
-    font-size: medium !important;
+.menu-slide {
+    li {
+        border-left: none;
+        i {
+            font-size: medium !important;
+        }
+    }
 }
 
 .mtn12 {
@@ -67,6 +68,6 @@
 }
 
 .item-active {
-    background-color: #fff;
-    border-left: 4px #ff6a3c solid;
+    background-color: $light;
+    border-left: 4px $energized solid;
 }

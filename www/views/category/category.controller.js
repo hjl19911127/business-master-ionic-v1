@@ -1,13 +1,14 @@
 (function () {
   'use strict';
   angular.module('category.controllers', ['category-add.controllers', 'category-edit.controllers'])
-    .controller('categoryCtrl', ['$scope', '$state', 'CategoryService', '$ionicHistory', '$ionicActionSheet', function ($scope, $state, CategoryService, $ionicHistory, $ionicActionSheet) {
-      $scope.$on('$ionicView.enter', function () {
+    .controller('categoryCtrl', ['$scope', '$state', 'CategoryService', '$ionicHistory', '$ionicActionSheet', '$stateParams', function ($scope, $state, CategoryService, $ionicHistory, $ionicActionSheet, $stateParams) {
+      var activeId = $stateParams.activeId || 0;
+      $scope.$on('$ionicView.beforeEnter', function () {
         $scope.categories = CategoryService.getAll(true);
-        if ($scope.activeCategory) {
+        if (activeId) {
           var find = false;
           $scope.categories.forEach(function (v) {
-            if (v.id == $scope.activeCategory.id) {
+            if (v.id == activeId) {
               $scope.activeCategory = v;
               $scope.sections = v.children;
               find = true;
