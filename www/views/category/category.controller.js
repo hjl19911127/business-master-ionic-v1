@@ -5,15 +5,24 @@
       $scope.$on('$ionicView.enter', function () {
         $scope.categories = CategoryService.getAll(true);
         if ($scope.activeCategory) {
+          var find = false;
           $scope.categories.forEach(function (v) {
             if (v.id == $scope.activeCategory.id) {
               $scope.activeCategory = v;
               $scope.sections = v.children;
+              find = true;
               if ($scope.sections && $scope.sections[0].id != 0) {
                 $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
               }
             }
           })
+          if (!find) {
+            $scope.activeCategory = $scope.categories[0];
+            $scope.sections = $scope.categories[0].children;
+            if ($scope.sections && $scope.sections[0].id != 0) {
+              $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
+            }
+          }
         } else {
           $scope.activeCategory = $scope.categories[0];
           $scope.sections = $scope.categories[0].children;

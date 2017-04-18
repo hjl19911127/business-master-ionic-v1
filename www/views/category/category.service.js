@@ -41,7 +41,7 @@
           if (d.parent_id) {
             var obj = angular.copy(d);
             this.dataMap[d.parent_id].children.push(obj);
-           }
+          }
         }.bind(this))
         this.nowId = Math.max.apply(null, this.originData.map(function (v) {
           return v.id;
@@ -93,7 +93,7 @@
       }
       service.deleteCategory = function (id) {
         this.originData = this.originData.filter(function (v) {
-          return v.parent_id = id || v.id == id;
+          return v.parent_id != id && v.id != id;
         });
         LocalStorageService.update(key, this.originData);
         this.refresh();
