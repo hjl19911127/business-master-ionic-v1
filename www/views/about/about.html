@@ -1,0 +1,19 @@
+<ion-view view-title="关于我们">
+  <ion-content class="stable-bg has-header has-footer" scroll="false">
+    <ion-slide-box does-continue="true" auto-play="true" slide-interval="3000" style="height:33%;">
+      <ion-slide>
+        <img class="full-image" src="views/about/img/one.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="full-image" src="views/about/img/two.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="full-image" src="views/about/img/three.jpg">
+      </ion-slide>
+    </ion-slide-box>
+    <p ng-include="'views/about/about.txt'"></p>
+  </ion-content>
+  <div class="bar bar-footer bar-stable no-bg">
+    <h6 class="title">©2010-2017 生意专家</h6>
+  </div>
+</ion-view>
