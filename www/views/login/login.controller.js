@@ -1,17 +1,14 @@
 (function () {
   'use strict';
   angular.module('login.controllers', [])
-    .controller('LoginCtrl', ['$scope', '$state', '$ionicPopup', 'LocalStorageService', function ($scope, $state, $ionicPopup, LocalStorageService) {
-      var USER_KEY = 'USER_INFO', IS_LOGIN_KEY = 'IS_LOGIN';
-      $scope.loginData = LocalStorageService.get(USER_KEY, {
-        username: '',
-        password: ''
-      })
+    .controller('LoginCtrl', ['$scope', '$state', '$ionicPopup', 'UserService', function ($scope, $state, $ionicPopup, UserService) {
+      var userData = UserService.getUserData();
+      $scope.loginData = UserService.getRememberUser();
       $scope.login = function () {
-        if ($scope.loginData.username == 'admin' && $scope.loginData.password == '123456') {
-          LocalStorageService.update(USER_KEY, $scope.loginData);
-          LocalStorageService.update(IS_LOGIN_KEY, 'true');
-          $state.go('app.home', {})
+        if ($scope.loginData.username == userData.username && $scope.loginData.password == userData.password) {
+          UserService.updateRememberUser($scope.loginData);
+          UserService.updateIsLogin(true);
+          $state.go('app.home')
         } else {
           $ionicPopup.alert({
             title: '警告',

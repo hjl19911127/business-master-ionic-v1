@@ -116,6 +116,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             controller: 'ShopEditCtrl'
           }
         }
+      })
+      .state('app.userPassword', {
+        url: '/user/password',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/user/password.html',
+            controller: 'PasswordCtrl'
+          }
+        }
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
