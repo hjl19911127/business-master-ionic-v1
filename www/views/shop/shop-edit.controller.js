@@ -14,10 +14,11 @@
       };
       $scope.shop = LocalStorageService.get(key, defaultValue);
       $scope.title = $stateParams.title;
-      $scope.inputValue = $scope.shop[$stateParams.key];
+      $scope.model = { inputValue: $scope.shop[$stateParams.key] }
       $scope.save = function () {
-        $scope.shop[$stateParams.key] = $scope.inputValue;
+        $scope.shop[$stateParams.key] = $scope.model.inputValue;
         LocalStorageService.update(key, $scope.shop);
+        $ionicHistory.goBack();
       }
     }])
 })();

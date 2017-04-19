@@ -12,7 +12,8 @@
         'shopPhone': '18305961659',
         'industryClassification': '软件服务行业',
       };
-      $scope.shop = LocalStorageService.get(key, defaultValue);
-
+      $scope.$on('$stateChangeSuccess', function () {
+        $scope.shop = LocalStorageService.get(key, defaultValue);
+      })
     }])
 })();
