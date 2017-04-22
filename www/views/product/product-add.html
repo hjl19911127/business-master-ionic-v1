@@ -2,7 +2,7 @@
   <ion-content class="has-header has-footer">
     <div class="list">
       <div class="item item-thumbnail-left item-icon-right stable-bg">
-        <img src="views/product/img/supplier_icon.png">
+        <img src="views/product/img/supplier_icon.png" ng-click="showActionSheet()" ng-if="product.images.length>=3">
         <i class="icon"><h2>上传图片</h2></i>
       </div>
       <div class="item item-input item-button-right">

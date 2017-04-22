@@ -22,7 +22,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-device",
     "ionic-plugin-keyboard",
-    "phonegap-plugin-barcodescanner"
+    "phonegap-plugin-barcodescanner",
+    "cordova-plugin-camera"
   ],
   "cordovaPlatforms": []
 }
