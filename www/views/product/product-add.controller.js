@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module('prodcut-add.controllers', [])
-    .controller('ProductAddCtrl', ['$scope', '$state', '$ionicPopup', 'ProductService', 'CategoryService', '$ionicHistory', '$stateParams', function ($scope, $state, $ionicPopup, ProductService, CategoryService, $ionicHistory, $stateParams) {
+    .controller('ProductAddCtrl', ['$scope', '$state', '$ionicPopup', 'ProductService', 'CategoryService', '$ionicHistory', '$stateParams', '$cordovaBarcodeScanner', '$cordovaCamera', function ($scope, $state, $ionicPopup, ProductService, CategoryService, $ionicHistory, $stateParams, $cordovaBarcodeScanner, $cordovaCamera) {
       $scope.product = {
         images: [],
         barcode: '',
@@ -25,7 +25,12 @@
         $scope.product.category = CategoryService.activeCategory;
       })
       $scope.scanBarcode = function () {
-
+        $cordovaBarcodeScanner.scan().then(function (barcodeData) {
+          $scope.product.barcode = barcodeData.text;
+           alert(barcodeData.text);
+        },function (error) {
+          alert(error);
+        })
       }
       $scope.save = function () {
 
