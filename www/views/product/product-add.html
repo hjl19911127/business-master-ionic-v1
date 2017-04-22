@@ -1,0 +1,59 @@
+<ion-view view-title="新增商品">
+  <ion-content class="has-header has-footer">
+    <div class="list">
+      <div class="item item-thumbnail-left item-icon-right stable-bg">
+        <img src="views/product/img/supplier_icon.png">
+        <i class="icon"><h2>上传图片</h2></i>
+      </div>
+      <div class="item item-input item-button-right">
+        <span class="input-label">条码</span>
+        <input type="text" placeholder="输入商品条码" ng-model="product.barcode">
+        <div class="buttons">
+          <button class="button button-clear button-energized ion-qr-scanner" ng-click="scanBarcode()"></button>
+        </div>
+      </div>
+      <div class="item item-input">
+        <span class="input-label">名称 <span class="energized">*</span></span>
+        <input type="text" placeholder="输入商品名称" ng-model="product.name">
+      </div>
+      <a class="item item-icon-right" ui-sref="app.category({activeId:product.category.id})">
+        分类 <span class="energized">*</span></span>
+        <span class="item-note">{{product.category.name + (product.category.section.name?('-' + product.category.section.name):'')}}</span>
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">售价 <span class="energized">*</span></span>
+        <input type="text" placeholder="输入商品售价" ng-model="model.price">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">进价</span>
+        <input type="text" placeholder="输入商品进价" ng-model="model.cost">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">库存</span>
+        <input type="text" placeholder="输入商品库存" ng-model="model.store">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">规格</span>
+        <input type="text" placeholder="规格 型号 尺码" ng-model="model.size">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">备注</span>
+        <input type="text" placeholder="输入商品备注" ng-model="model.remark">
+      </label>
+      <a class="item item-input item-icon-right">
+        <span class="input-label">供应商</span>
+        <input type="text" placeholder="商品供应商" ng-model="model.supplier">
+        <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer no-padding">
+    <div class="button-bar">
+      <button class="button button-energized" ng-click="save()">完成</button>
+      <button class="button button-energized" ng-click="saveAndNew()">继续添加</button>
+    </div>
+  </div>
+</ion-view>

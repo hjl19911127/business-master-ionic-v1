@@ -23,7 +23,9 @@
         if ((!$scope.category.id && $scope.category.name) || ($scope.category.id && !emptyLines.length)) {
           if ($scope.category.id) {
             CategoryService.createSubCategory($scope.category.id, angular.copy($scope.sections));
-            $ionicHistory.goBack();
+            $state.go('app.category', {
+              activeId: $scope.category.id
+            }, { location: 'replace' });
           } else {
             $scope.category.children = $scope.sections;
             var newId = CategoryService.addCategory(angular.copy($scope.category));

@@ -45,10 +45,20 @@
           })
         }
       }
-      $scope.selectSection = function (data) {
-        $scope.activeSection = data;
+      $scope.selectSection = function (item) {
+        $scope.activeSection = {
+          id: $scope.activeCategory.id,
+          name: $scope.activeCategory.name,
+          section: {
+            id: item.id,
+            name: item.id ? item.name : ''
+          }
+        };
         $ionicHistory.goBack();
       }
+      $scope.$watch('activeSection', function (newValue, oldValue) {
+        CategoryService.updateActiveCategory(newValue);
+      })
       $scope.showActionSheet = function () {
         $ionicActionSheet.show({
           buttons: [{ 'text': '新增小分类' }, { 'text': '编辑分类' }],

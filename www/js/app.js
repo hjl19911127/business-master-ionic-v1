@@ -56,6 +56,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
+      .state('app.productAdd', {
+        url: '/productadd',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/product/product-add.html',
+            controller: 'ProductAddCtrl'
+          }
+        }
+      })
       .state('app.category', {
         url: '/category',
         params: {

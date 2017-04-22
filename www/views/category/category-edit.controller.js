@@ -18,7 +18,9 @@
           okText: '确认'
         }).then(function (res) {
           CategoryService.deleteCategory($scope.category.id);
-          $ionicHistory.goBack();
+          $state.go('app.category', {
+            activeId: $scope.category.id
+          }, { location: 'replace' });
         })
       }
       $scope.removeSection = function (index) {
@@ -38,7 +40,9 @@
         if ($scope.category.name && !emptyLines.length) {
           $scope.category.children = $scope.sections;
           CategoryService.updateCategory($scope.category.id, $scope.category);
-          $ionicHistory.goBack();
+          $state.go('app.category', {
+            activeId: $scope.category.id
+          }, { location: 'replace' });
         }
       }
     }]);

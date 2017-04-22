@@ -9870,3 +9870,6 @@ a.button {
 .item-active {
   background-color: #fff;
   border-left: 4px #ff6a3c solid; }
+
+.no-padding {
+  padding: 0 !important; }
