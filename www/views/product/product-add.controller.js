@@ -1,8 +1,8 @@
 (function () {
   'use strict';
   angular.module('prodcut-add.controllers', [])
-    .controller('ProductAddCtrl', ['$scope', '$state', '$ionicPopup', '$ionicActionSheet', 'ProductService', 'CategoryService', '$ionicHistory', '$stateParams', '$cordovaBarcodeScanner', '$cordovaCamera', function ($scope, $state, $ionicPopup, $ionicActionSheet, ProductService, CategoryService, $ionicHistory, $stateParams, $cordovaBarcodeScanner, $cordovaCamera) {
-      $scope.product = {
+    .controller('ProductAddCtrl', ['$scope', '$state', '$ionicPopup', '$ionicActionSheet', 'ProductService', 'CategoryService', '$ionicHistory', '$stateParams', '$cordovaBarcodeScanner', '$cordovaCamera', '$cordovaImagePicker', function ($scope, $state, $ionicPopup, $ionicActionSheet, ProductService, CategoryService, $ionicHistory, $stateParams, $cordovaBarcodeScanner, $cordovaCamera, $cordovaImagePicker) {
+      var emptyProduct = {
         images: [],
         barcode: '',
         category: {
@@ -19,8 +19,17 @@
         store: '',
         size: '',
         remark: '',
-        supplier: ''
+        supplier: {
+          name: '',
+          phone: ''
+        }
+      }, emptySupplier = {
+        name: '',
+        phone: ''
       }
+      $scope.product = angular.copy(emptyProduct);
+      $scope.supplier = angular.copy(emptySupplier);
+
       $scope.$on('ActiveCategoryUpdate', function () {
         $scope.product.category = CategoryService.activeCategory;
       })
@@ -28,8 +37,8 @@
         $cordovaBarcodeScanner.scan().then(function (barcodeData) {
           $scope.product.barcode = barcodeData.text;
           alert(barcodeData.text);
-        }, function (error) {
-          alert(error);
+        }, function (err) {
+          alert(err);
         })
       }
       function camera() {
@@ -46,10 +55,24 @@
           popoverOptions: CameraPopoverOptions,
         }
         $cordovaCamera.getPicture(options).then(function (imageData) {
-          alert(imageData);
           $scope.product.images.push(imageData);
         }, function (err) {
-
+          alert(err);
+        })
+      }
+      function pickImage() {
+        var options = {
+          maximumImagesCount: 3,
+          width: 0,
+          height: 0,
+          quality: 80
+        }
+        $cordovaImagePicker.getPictures(options).then(function (results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.product.images.push(results[i]);
+          }
+        }, function (err) {
+          alert(err);
         })
       }
       $scope.showActionSheet = function () {
@@ -68,12 +91,49 @@
           }
         })
       }
+      $scope.selectSupplier = function () {
+        $ionicPopup.show({
+          title: '新增供应商',
+          templateUrl: 'views/supplier/supplier.html',
+          scope: $scope,
+          buttons: [{
+            text: '取消',
+            type: 'button-energized button-outline',
+            onTap: function (e) {
+              $scope.supplier = angular.copy(emptySupplier);
+            }
+          }, {
+            text: '确定',
+            type: 'button-energized',
+            onTap: function (e) {
+              $scope.product.supplier = angular.copy($scope.supplier);
+              $scope.supplier = angular.copy(emptySupplier);
+            }
+          }]
+        }).then(function (res) {
+        })
+      }
+      function saveProduct(callback) {
+        $ionicPopup.confirm({
+          title: '您确认要新增商品吗？',
+          cancelText: '取消',
+          okText: '确认'
+        }).then(function () {
+          ProductService.createProduct($scope.product);
+          callback();
+        })
+      }
       $scope.save = function () {
-
+        saveProduct(function (res) {
+          $ionicHistory.goBack();
+        }.bind(this));
       }
       $scope.saveAndNew = function () {
-        $scope.save();
-        $state.reload();
+        saveProduct(function (res) {
+          $scope.product = angular.copy(emptyProduct);
+          $scope.supplier = angular.copy(emptySupplier);
+          $state.reload();
+        }.bind(this));
       }
     }])
 })();

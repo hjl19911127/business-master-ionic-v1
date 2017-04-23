@@ -8,7 +8,7 @@
         if ($scope.loginData.username == userData.username && $scope.loginData.password == userData.password) {
           UserService.updateRememberUser($scope.loginData);
           UserService.updateIsLogin(true);
-          $state.go('app.home')
+          $state.go('app.home', {}, { location: 'replace' })
         } else {
           $ionicPopup.alert({
             title: '警告',

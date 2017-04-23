@@ -57,7 +57,7 @@
         $ionicHistory.goBack();
       }
       $scope.$watch('activeSection', function (newValue, oldValue) {
-        CategoryService.updateActiveCategory(newValue);
+        if (newValue) CategoryService.updateActiveCategory(newValue);
       })
       $scope.showActionSheet = function () {
         $ionicActionSheet.show({

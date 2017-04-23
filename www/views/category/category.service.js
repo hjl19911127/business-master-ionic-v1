@@ -48,10 +48,10 @@
             var obj = angular.copy(d);
             this.dataMap[d.parent_id].children.push(obj);
           }
-        }.bind(this))
-        this.nowId = Math.max.apply(null, this.originData.map(function (v) {
+        }.bind(this));
+        this.nowId = this.originData.length ? Math.max.apply(null, this.originData.map(function (v) {
           return v.id;
-        })) || 1;
+        })) : 0;
       }
 
       service.getAll = function (isTree) {
@@ -79,7 +79,7 @@
         return cid;
       }
       service.createCategory = function (data) {
-        data.id = this.nowId;
+        data.id = this.nowId + 1;
         data.parent_id = 0;
         this.originData.push(data);
         LocalStorageService.update(key, this.originData);

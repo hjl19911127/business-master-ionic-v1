@@ -1,9 +1,10 @@
 <ion-view view-title="新增商品">
   <ion-content class="has-header has-footer">
     <div class="list">
-      <div class="item item-thumbnail-left item-icon-right stable-bg">
-        <img src="views/product/img/supplier_icon.png" ng-click="showActionSheet()" ng-if="product.images.length>=3">
-        <i class="icon"><h2>上传图片</h2></i>
+      <div class="item item-icon-right stable-bg">
+        <img class="upload-img" ng-repeat="img in product.images" ng-src="{{img}}">
+        <img class="upload-img" src="views/product/img/supplier_icon.png" ng-click="showActionSheet()" ng-if="product.images.length<3">
+        <i class="icon"><h3>上传图片</h3></i>
       </div>
       <div class="item item-input item-button-right">
         <span class="input-label">条码</span>
@@ -17,7 +18,7 @@
         <input type="text" placeholder="输入商品名称" ng-model="product.name">
       </div>
       <a class="item item-icon-right" ui-sref="app.category({activeId:product.category.id})">
-        分类 <span class="energized">*</span></span>
+        分类 <span class="energized">*</span>
         <span class="item-note">{{product.category.name + (product.category.section.name?('-' + product.category.section.name):'')}}</span>
         <i class="icon ion-ios-arrow-forward"></i>
       </a>
@@ -25,34 +26,34 @@
     <div class="list">
       <label class="item item-input">
         <span class="input-label">售价 <span class="energized">*</span></span>
-        <input type="text" placeholder="输入商品售价" ng-model="model.price">
+        <input type="text" placeholder="输入商品售价" ng-model="product.price">
       </label>
       <label class="item item-input">
         <span class="input-label">进价</span>
-        <input type="text" placeholder="输入商品进价" ng-model="model.cost">
+        <input type="text" placeholder="输入商品进价" ng-model="product.cost">
       </label>
       <label class="item item-input">
         <span class="input-label">库存</span>
-        <input type="text" placeholder="输入商品库存" ng-model="model.store">
+        <input type="text" placeholder="输入商品库存" ng-model="product.store">
       </label>
       <label class="item item-input">
         <span class="input-label">规格</span>
-        <input type="text" placeholder="规格 型号 尺码" ng-model="model.size">
+        <input type="text" placeholder="规格 型号 尺码" ng-model="product.size">
       </label>
       <label class="item item-input">
         <span class="input-label">备注</span>
-        <input type="text" placeholder="输入商品备注" ng-model="model.remark">
+        <input type="text" placeholder="输入商品备注" ng-model="product.remark">
       </label>
-      <a class="item item-input item-icon-right">
+      <a class="item item-input item-icon-right" ng-click="selectSupplier()">
         <span class="input-label">供应商</span>
-        <input type="text" placeholder="商品供应商" ng-model="model.supplier">
+        <span class="item-note">{{product.supplier.name || '商品供应商'}}</span>
         <i class="icon ion-ios-arrow-forward"></i>
       </a>
     </div>
   </ion-content>
   <div class="bar bar-footer no-padding">
-    <div class="button-bar">
-      <button class="button button-energized" ng-click="save()">完成</button>
+    <div class="button-bar footer-button">
+      <button class="button button-energized button-energized-lighten" ng-click="save()">完成</button>
       <button class="button button-energized" ng-click="saveAndNew()">继续添加</button>
     </div>
   </div>
