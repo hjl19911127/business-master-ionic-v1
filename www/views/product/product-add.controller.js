@@ -35,7 +35,22 @@
       function camera() {
         var options = {
           quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 100,
+          targetHeight: 100,
+          correctOrientation: true,
+          saveToPhotoAlbum: false,
+          popoverOptions: CameraPopoverOptions,
         }
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+          alert(imageData);
+          $scope.product.images.push(imageData);
+        }, function (err) {
+
+        })
       }
       $scope.showActionSheet = function () {
         $ionicActionSheet.show({

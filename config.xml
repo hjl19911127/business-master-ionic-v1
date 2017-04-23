@@ -3,12 +3,13 @@
   <name>生意专家</name>
   <description>
         BusinessMaster supported by Alexander Huang.
-    </description>
+  </description>
   <author email="hjl4347570@163.com" href="http://www.codehuang.com/">
       Alexander(150321027)
-    </author>
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="tel:*" launch-external="yes"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
