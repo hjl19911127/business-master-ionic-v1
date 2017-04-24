@@ -3,6 +3,14 @@
   angular.module('category.controllers', ['category-add.controllers', 'category-edit.controllers'])
     .controller('categoryCtrl', ['$scope', '$state', 'CategoryService', '$ionicHistory', '$ionicActionSheet', '$stateParams', function ($scope, $state, CategoryService, $ionicHistory, $ionicActionSheet, $stateParams) {
       var activeId = $stateParams.activeId || 0;
+      $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        if (fromState.name === 'app.productAdd') {
+          $scope.showInfo = '无小分类进入大分类';
+        }
+        if (fromState.name === 'app.product') {
+          $scope.showInfo = '全部商品';
+        }
+      });
       $scope.$on('$ionicView.beforeEnter', function () {
         $scope.categories = CategoryService.getAll(true);
         if (activeId) {
@@ -13,7 +21,7 @@
               $scope.sections = v.children;
               find = true;
               if ($scope.sections && $scope.sections[0].id != 0) {
-                $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
+                $scope.sections.unshift({ id: 0, name: $scope.showInfo });
               }
             }
           })
@@ -21,14 +29,14 @@
             $scope.activeCategory = $scope.categories[0];
             $scope.sections = $scope.categories[0].children;
             if ($scope.sections && $scope.sections[0].id != 0) {
-              $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
+              $scope.sections.unshift({ id: 0, name: $scope.showInfo });
             }
           }
         } else {
           $scope.activeCategory = $scope.categories[0];
           $scope.sections = $scope.categories[0].children;
           if ($scope.sections && $scope.sections[0].id != 0) {
-            $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
+            $scope.sections.unshift({ id: 0, name: $scope.showInfo });
           }
         }
       })
@@ -39,7 +47,7 @@
               $scope.activeCategory = data;
               $scope.sections = data.children;
               if ($scope.sections && $scope.sections[0].id != 0) {
-                $scope.sections.unshift({ id: 0, name: '无小分类进入大分类' });
+                $scope.sections.unshift({ id: 0, name: $scope.showInfo });
               }
             }
           })

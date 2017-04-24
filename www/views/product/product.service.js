@@ -2,7 +2,14 @@
   'use strict';
   angular.module('product.service', [])
     .factory('ProductService', ['LocalStorageService', function (LocalStorageService) {
-      var service = {}, key = 'PRODUCT', defaultProducts = [];
+      var service = {}, key = 'PRODUCT', defaultProducts = [
+        { id: 1, images: [], name: 'iphone7', price: '5388', stock: 12, barcode: '12121212112' },
+        { id: 2, images: [], name: 'node7', price: '5388', stock: 120, barcode: '12121212112' },
+        { id: 3, images: [], name: '小米5 plus', price: '1999', stock: 12, barcode: '12121212112' },
+        { id: 4, images: [], name: 'iPhone7 plus', price: '6388', stock: 12, barcode: '12121212112' },
+        { id: 5, images: [], name: '华为 P9', price: '3388', stock: 19, barcode: '12121212112' },
+        { id: 6, images: [], name: '小米5', price: '1599', stock: 9, barcode: '12121212112' },
+      ];
 
       service.init = function () {
         this.originData = LocalStorageService.get(key);
@@ -24,7 +31,7 @@
       }
 
       service.getAll = function () {
-        return this.originData;
+        return angular.copy(this.originData);
       }
       service.getProductById = function (id) {
         return angular.copy(this.dataMap[id]);

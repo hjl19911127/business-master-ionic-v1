@@ -56,6 +56,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           }
         }
       })
+      .state('app.product', {
+        url: '/product',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/product/product.html',
+            controller: 'ProductCtrl'
+          }
+        }
+      })
       .state('app.productAdd', {
         url: '/productadd',
         views: {

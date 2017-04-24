@@ -16,7 +16,7 @@
         name: '',
         price: '',
         cost: '',
-        store: '',
+        stock: '',
         size: '',
         remark: '',
         supplier: {
