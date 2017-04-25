@@ -4,42 +4,42 @@
     .controller('categoryCtrl', ['$scope', '$state', 'CategoryService', '$ionicHistory', '$ionicActionSheet', '$stateParams', function ($scope, $state, CategoryService, $ionicHistory, $ionicActionSheet, $stateParams) {
       var activeId = $stateParams.activeId || 0;
       $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        if (fromState.name === 'app.productAdd') {
+        if (fromState.name === 'app.home') {
           $scope.showInfo = '无小分类进入大分类';
         }
         if (fromState.name === 'app.product') {
           $scope.showInfo = '全部商品';
         }
-      });
-      $scope.$on('$ionicView.beforeEnter', function () {
-        $scope.categories = CategoryService.getAll(true);
-        if (activeId) {
-          var find = false;
-          $scope.categories.forEach(function (v) {
-            if (v.id == activeId) {
-              $scope.activeCategory = v;
-              $scope.sections = v.children;
-              find = true;
+        if (fromState.name !== 'app.category') {
+          $scope.categories = CategoryService.getAll(true);
+          if (activeId) {
+            var find = false;
+            $scope.categories.forEach(function (v) {
+              if (v.id == activeId) {
+                $scope.activeCategory = v;
+                $scope.sections = v.children;
+                find = true;
+                if ($scope.sections && $scope.sections[0].id != 0) {
+                  $scope.sections.unshift({ id: 0, name: $scope.showInfo || '无小分类进入大分类' });
+                }
+              }
+            })
+            if (!find) {
+              $scope.activeCategory = $scope.categories[0];
+              $scope.sections = $scope.categories[0].children;
               if ($scope.sections && $scope.sections[0].id != 0) {
-                $scope.sections.unshift({ id: 0, name: $scope.showInfo });
+                $scope.sections.unshift({ id: 0, name: $scope.showInfo || '无小分类进入大分类' });
               }
             }
-          })
-          if (!find) {
+          } else {
             $scope.activeCategory = $scope.categories[0];
             $scope.sections = $scope.categories[0].children;
             if ($scope.sections && $scope.sections[0].id != 0) {
-              $scope.sections.unshift({ id: 0, name: $scope.showInfo });
+              $scope.sections.unshift({ id: 0, name: $scope.showInfo || '无小分类进入大分类' });
             }
           }
-        } else {
-          $scope.activeCategory = $scope.categories[0];
-          $scope.sections = $scope.categories[0].children;
-          if ($scope.sections && $scope.sections[0].id != 0) {
-            $scope.sections.unshift({ id: 0, name: $scope.showInfo });
-          }
         }
-      })
+      });
       $scope.selectCategory = function (id) {
         if ($scope.activeCategory.id != id) {
           angular.forEach($scope.categories, function (data, index) {
@@ -47,7 +47,7 @@
               $scope.activeCategory = data;
               $scope.sections = data.children;
               if ($scope.sections && $scope.sections[0].id != 0) {
-                $scope.sections.unshift({ id: 0, name: $scope.showInfo });
+                $scope.sections.unshift({ id: 0, name: $scope.showInfo || '无小分类进入大分类' });
               }
             }
           })

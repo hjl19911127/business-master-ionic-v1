@@ -10,13 +10,13 @@
         </button>
       </div>
     </div>
-    <div class="list no-margin-bottom">
+    <div class="list no-margin-bottom" ng-if="isReady">
       <div class="item item-button-right">
         总正库存 {{products.length}} 件，总成本 413.00 元
         <div class="buttons">
           <button class="button button-clear button-energized ion-ios-bell" ng-click="editCategory()">
           </button>
-          <button class="button button-clear button-energized ion-android-add" ng-click="removeCategory()">
+          <button class="button button-clear button-energized ion-android-add" ui-sref="app.productAdd">
           </button>
         </div>
       </div>
@@ -25,14 +25,15 @@
   <ion-nav-buttons side="right">
     <a class="button button-clear" ui-sref="app.category">分类</a>
   </ion-nav-buttons>
-  <ion-content class="has-header has-subheader" style="top:153px;">
+  <ion-content class="has-header has-subheader" style="top:153px;" ng-if="isReady">
+    <ion-refresher pulling-text="下拉可以刷新" on-refresh="doRefresh()"></ion-refresher>
     <div class="list">
-      <a class="item item-thumbnail-left item-button-right" ng-repeat="item in products">
-        <img ng-click="showActionSheet()" ng-src="{{ item.image[0] || 'views/product/img/c_goodspicture.png' }}">
+      <a class="item item-thumbnail-left item-button-right" ng-repeat="item in products" style="padding-left:90px;">
+        <img ng-click="showActionSheet()" ng-src="{{ item.image[0] || 'views/product/img/c_goodspicture.png' }}" style="max-height:60px;max-width:60px;">
         <div>
           <p>{{item.name}}</p>
           <p class="energized">￥{{item.price}}</p>
-          <p>库存：{{item.stock}}件</p>
+          <p>条码：{{item.barcode}}&nbsp;&nbsp;库存：{{item.stock}}件</p>
         </div>
         <div class="buttons">
           <button class="button button-clear button-energized ion-android-share-alt button-with-border-radius" ng-click="editCategory()">
