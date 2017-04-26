@@ -3,16 +3,16 @@
     <div class="list no-margin-bottom">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="请输入商品名称，拼音，数字" style="width:100%;">
+          <input type="text" placeholder="请输入商品名称" style="width:100%;" ng-model="model.name">
         </label>
-        <button class="button button-small">
-            Submit
+        <button class="button button-small button-energized" ng-click="getByName()">
+            搜索
         </button>
       </div>
     </div>
-    <div class="list no-margin-bottom" ng-if="isReady">
+    <div class="list no-margin-bottom" ng-show="isReady && products.length">
       <div class="item item-button-right">
-        总正库存 {{products.length}} 件，总成本 413.00 元
+        总正库存 {{total}} 件，总成本 413.00 元
         <div class="buttons">
           <button class="button button-clear button-energized ion-ios-bell" ng-click="editCategory()">
           </button>
@@ -25,8 +25,8 @@
   <ion-nav-buttons side="right">
     <a class="button button-clear" ui-sref="app.category">分类</a>
   </ion-nav-buttons>
-  <ion-content class="has-header has-subheader" style="top:153px;" ng-if="isReady">
-    <ion-refresher pulling-text="下拉可以刷新" on-refresh="doRefresh()"></ion-refresher>
+  <ion-content class="has-header has-subheader" ng-class="{ 'has-total':products.length }" ng-show="isReady">
+    <ion-refresher pulling-text="下拉可以刷新" on-refresh="doRefresh()" refreshing-text="正在加载中..."></ion-refresher>
     <div class="list">
       <a class="item item-thumbnail-left item-button-right" ng-repeat="item in products" style="padding-left:90px;">
         <img ng-click="showActionSheet()" ng-src="{{ item.image[0] || 'views/product/img/c_goodspicture.png' }}" style="max-height:60px;max-width:60px;">
@@ -36,13 +36,21 @@
           <p>条码：{{item.barcode}}&nbsp;&nbsp;库存：{{item.stock}}件</p>
         </div>
         <div class="buttons">
-          <button class="button button-clear button-energized ion-android-share-alt button-with-border-radius" ng-click="editCategory()">
+          <button class="button button-clear button-energized ion-android-share-alt button-with-border-radius" ng-click="">
           </button>
         </div>
       </a>
     </div>
-    <ion-infinite-scroll>
-
+    <div style="text-align:center;" ng-show="!products.length">
+      <img class="full-image image-title" src="views/product/img/commodity_no.png">
+      <p class="dark" style="line-height:30px;">您还没有任何商品信息<br>您可以</p>
+      <div style="padding:0 30%">
+        <button class="button button-block button-energized button-energized" ui-sref="app.productAdd">
+          新增商品
+        </button>
+      </div>
+    </div>
+    <ion-infinite-scroll immediate-check="false" ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="1%">
     </ion-infinite-scroll>
   </ion-content>
 </ion-view>
