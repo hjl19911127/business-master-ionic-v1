@@ -9896,3 +9896,24 @@ a.button {
 
 .has-total {
   top: 153px; }
+
+.toast-container {
+  position: fixed;
+  width: 100%;
+  bottom: 50px;
+  z-index: 10;
+  opacity: 0;
+  -webkit-transition: opacity .8s;
+  transition: opacity .8; }
+  .toast-container.active {
+    opacity: 1; }
+
+.toast-message {
+  width: 270px;
+  margin: 5px auto;
+  padding: 5px;
+  background-color: #444;
+  text-align: center;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 14px; }

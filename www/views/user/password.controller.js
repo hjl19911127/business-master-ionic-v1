@@ -11,7 +11,10 @@
         p: '',
         cp: ''
       };
-      $scope.save = function () {
+      $scope.save = function (isValid) {
+        if (!isValid) {
+          return;
+        }
         if ($scope.model.op === userData.password) {
           if ($scope.model.p && ($scope.model.p === $scope.model.cp)) {
             userData.password = $scope.model.p;
