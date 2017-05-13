@@ -24,7 +24,8 @@
     "ionic-plugin-keyboard",
     "phonegap-plugin-barcodescanner",
     "cordova-plugin-camera",
-    "cordova-plugin-image-picker"
+    "cordova-plugin-image-picker",
+    "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": []
 }
