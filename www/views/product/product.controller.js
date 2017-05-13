@@ -4,16 +4,19 @@
     .controller('ProductCtrl', ['$scope', '$state', '$ionicPopup', 'ProductService', '$ionicHistory', '$ionicLoading', '$timeout', function ($scope, $state, $ionicPopup, ProductService, $ionicHistory, $ionicLoading, $timeout) {
       $scope.$on('$ionicView.beforeEnter', function (event, data) {
         $scope.isReady = false;
-        $scope.loadingMore = false;
+        // $scope.loadingMore = false;
         $scope.show();
+        $scope.page = 0;
+        $scope.size = 10;
+        $scope.products = [];
         $scope.doRefresh();
+        $scope.isReady = true;
         $timeout(function () {
           $ionicLoading.hide();
-          $scope.isReady = true;
+          $scope.loadingMore = true;
         }, 1000);
         $scope.model.name = '';
       });
-      $scope.size = 10;
       $scope.doRefresh = function () {
         $scope.page = 0;
         $scope.search(true);
@@ -27,12 +30,17 @@
         $scope.search(true);
       }
       $scope.loadMore = function () {
+        $scope.loadingMore = false;
         $scope.page++;
         $scope.search();
-        $scope.$broadcast('scroll.infiniteScrollComplete');
+        $timeout(function () {
+          $scope.loadingMore = true
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+        }, 1000);
       }
       $scope.search = function (refresh) {
         var data = ProductService.query($scope.page, $scope.size, $scope.model.name);
+        console.log(data.items.length);
         $scope.products = !refresh ? ($scope.products || []).concat(data.items) : data.items;
         $scope.total = data.total;
       }
@@ -45,11 +53,7 @@
         $ionicLoading.hide();
       };
       $scope.moreDataCanBeLoaded = function () {
-        if ($scope.products && $scope.total > $scope.products.length && !$scope.isLoading) {
-          return true;
-        } else {
-          return false;
-        }
+        return $scope.loadingMore && $scope.products.length < $scope.total;
       }
     }])
 })();

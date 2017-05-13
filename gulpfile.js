@@ -40,7 +40,7 @@ gulp.task('minifycss', function (done) {
 gulp.task('concatJS', function (done) {
   gulp.src('./www/views/**/*.js')
     .pipe(concat('app.bundle.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
