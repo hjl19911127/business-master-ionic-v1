@@ -1,4 +1,4 @@
 (function () {
   'use strict';
-  angular.module('starter.directives', []);
+  angular.module('starter.directives', ['company.directives']);
 })();

@@ -3,7 +3,7 @@
     <a class="button button-icon button-clear ion-android-arrow-back" ng-click="goBack()">
     </a>
   </ion-nav-buttons>
-  <ion-content class="stable-bg has-footer" scroll="false">
+  <ion-content class="stable-bg" scroll="false">
     <div class="list list-inset">
       <a ui-sref="app.shop" class="item item-icon-right">
         店铺设置<i class="icon ion-ios-arrow-forward"></i>
@@ -32,7 +32,5 @@
       </a>
     </div>
   </ion-content>
-  <div class="bar bar-footer bar-stable no-bg">
-    <h6 class="title">©2010-2017 生意专家</h6>
-  </div>
+  <company-directive></company-directive>
 </ion-view>
