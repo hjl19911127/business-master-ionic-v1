@@ -15,18 +15,18 @@
         { id: 10, images: [], name: 'iPhone7a plus', price: '6388', stock: 12, barcode: '12121212112' },
         { id: 11, images: [], name: '华为 P93', price: '3388', stock: 19, barcode: '12121212112' },
         { id: 12, images: [], name: '小米52', price: '1599', stock: 9, barcode: '12121212112' },
-         { id: 1, images: [], name: 'iphone7', price: '5388', stock: 12, barcode: '12121212112' },
-        { id: 2, images: [], name: 'node7', price: '5388', stock: 120, barcode: '12121212112' },
-        { id: 3, images: [], name: '小米5 plus', price: '1999', stock: 12, barcode: '12121212112' },
-        { id: 4, images: [], name: 'iPhone7 plus', price: '6388', stock: 12, barcode: '12121212112' },
-        { id: 5, images: [], name: '华为 P9', price: '3388', stock: 19, barcode: '12121212112' },
-        { id: 6, images: [], name: '小米5', price: '1599', stock: 9, barcode: '12121212112' },
-        { id: 7, images: [], name: 'iphone7p', price: '5388', stock: 12, barcode: '12121212112' },
-        { id: 8, images: [], name: 'node71', price: '5388', stock: 120, barcode: '12121212112' },
-        { id: 9, images: [], name: '小米5z plus', price: '1999', stock: 12, barcode: '12121212112' },
-        { id: 10, images: [], name: 'iPhone7a plus', price: '6388', stock: 12, barcode: '12121212112' },
-        { id: 11, images: [], name: '华为 P93', price: '3388', stock: 19, barcode: '12121212112' },
-        { id: 12, images: [], name: '小米52', price: '1599', stock: 9, barcode: '12121212112' },
+        { id: 13, images: [], name: 'iphone7', price: '5388', stock: 12, barcode: '12121212112' },
+        { id: 14, images: [], name: 'node7', price: '5388', stock: 120, barcode: '12121212112' },
+        { id: 15, images: [], name: '小米5 plus', price: '1999', stock: 12, barcode: '12121212112' },
+        { id: 16, images: [], name: 'iPhone7 plus', price: '6388', stock: 12, barcode: '12121212112' },
+        { id: 17, images: [], name: '华为 P9', price: '3388', stock: 19, barcode: '12121212112' },
+        { id: 18, images: [], name: '小米5', price: '1599', stock: 9, barcode: '12121212112' },
+        { id: 19, images: [], name: 'iphone7p', price: '5388', stock: 12, barcode: '12121212112' },
+        { id: 20, images: [], name: 'node71', price: '5388', stock: 120, barcode: '12121212112' },
+        { id: 21, images: [], name: '小米5z plus', price: '1999', stock: 12, barcode: '12121212112' },
+        { id: 22, images: [], name: 'iPhone7a plus', price: '6388', stock: 12, barcode: '12121212112' },
+        { id: 23, images: [], name: '华为 P93', price: '3388', stock: 19, barcode: '12121212112' },
+        { id: 24, images: [], name: '小米52', price: '1599', stock: 9, barcode: '12121212112' },
       ];
 
       service.init = function () {
@@ -35,6 +35,9 @@
           LocalStorageService.update(key, defaultProducts);
           this.originData = defaultProducts;
         }
+        this.originData = this.originData.sort(function (v1, v2) {
+          return v2.id - v1.id;
+        })
         this.refresh();
       }
       service.refresh = function () {
